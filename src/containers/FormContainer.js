@@ -74,6 +74,37 @@ class FormContainer extends Component {
         }))
     }
 
+    handleFormSubmit = (e) => {
+        e.preventDefault();
+        let userData = this.state.newUser;
+
+        fetch('http://example.com', {
+            method: "POST",
+            body: JSON.stringify(userData),
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+        }).then(response => {
+            response.json().then(data => {
+                console.log("Successful" + data);
+            })
+        })
+    }
+
+    handleClearForm = (e) => {
+        e.preventDefault();
+        this.setState({
+            newUser: {
+                name: "",
+                age: "",
+                gender: "",
+                skills: [],
+                about: ""
+            }
+        });
+    }
+
     render() {
         return (
             <form className="container" onSubmit={this.handleFormSubmit}>
@@ -131,5 +162,9 @@ class FormContainer extends Component {
         );
     }
 }
+
+const buttonStyle = {
+    margin : '10px 10px 10px 10px'
+  }
 
 export default FormContainer;

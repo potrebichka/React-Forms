@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 // Import Components
 import CheckBox from '../components/CheckBox';
 import Input from '../components/Input';
-// import TextArea from '../components/TextArea';
+import TextArea from '../components/TextArea';
 import Select from '../components/Select';
 // import Button from '../components/Button';
 
@@ -107,8 +107,14 @@ class FormContainer extends Component {
                     selectedOptions={this.state.newUser.skills}
                     handleChange={this.handleSkillsCheckBox}
                 />
-                {/* <TextArea />
-                <Button /> 
+                <TextArea 
+                    title="About"
+                    name="about"
+                    value={this.state.newUser.about}
+                    placeholder="About"
+                    handleChange={this.handleInput}
+                />
+                {/* <Button /> 
                 <Button /> */}
 
             </form>

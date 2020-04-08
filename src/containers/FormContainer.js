@@ -5,7 +5,7 @@ import CheckBox from '../components/CheckBox';
 import Input from '../components/Input';
 import TextArea from '../components/TextArea';
 import Select from '../components/Select';
-// import Button from '../components/Button';
+import Button from '../components/Button';
 
 class FormContainer extends Component {
     constructor(props) {
@@ -108,14 +108,24 @@ class FormContainer extends Component {
                     handleChange={this.handleSkillsCheckBox}
                 />
                 <TextArea 
-                    title="About"
+                    title="About you"
                     name="about"
                     value={this.state.newUser.about}
-                    placeholder="About"
+                    placeholder="Describe your past experience and skills"
                     handleChange={this.handleInput}
                 />
-                {/* <Button /> 
-                <Button /> */}
+                <Button 
+                    action={this.handleFormSubmit}
+                    type="primary"
+                    title="Submit"
+                    //style={buttonStyle}
+                /> 
+                <Button 
+                    action={this.handleClearForm}
+                    type="secondary"
+                    title="Clear"
+                    //style={buttonStyle}
+                />
 
             </form>
         );

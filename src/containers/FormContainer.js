@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 // Import Components
-//import CheckBox from '../components/CheckBox';
+import CheckBox from '../components/CheckBox';
 import Input from '../components/Input';
 // import TextArea from '../components/TextArea';
 import Select from '../components/Select';
@@ -17,7 +17,7 @@ class FormContainer extends Component {
                 email: '',
                 age: '',
                 gender: '',
-                expertise: '',
+                skills: '',
                 about: ''
             },
 
@@ -59,6 +59,21 @@ class FormContainer extends Component {
         );
     }
 
+    handleSkillsCheckBox = (e) => {
+        const newSelection = e.target.value;
+        let newSelectionArray;
+
+        if (this.state.newUser.skills.indexOf(newSelection) > -1) {
+            newSelectionArray = this.state.newUser.skills.filter( s => s !== newSelection)
+        } else {
+            newSelectionArray = [...this.state.newUser.skills, newSelection];
+        }
+        
+        this.setState(prevState => ({
+            newUser: {...prevState.newUser, skills: newSelectionArray}
+        }))
+    }
+
     render() {
         return (
             <form className="container" onSubmit={this.handleFormSubmit}>
@@ -85,8 +100,14 @@ class FormContainer extends Component {
                     value={this.state.newUser.gender}
                     handleChange={this.handleInput}
                 /> 
-                {/* <CheckBox />
-                <TextArea />
+                <CheckBox 
+                    title="List of skills"
+                    name="skills"
+                    options={this.state.skillOptions}
+                    selectedOptions={this.state.newUser.skills}
+                    handleChange={this.handleSkillsCheckBox}
+                />
+                {/* <TextArea />
                 <Button /> 
                 <Button /> */}
 

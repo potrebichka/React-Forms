@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 //import CheckBox from '../components/CheckBox';
 import Input from '../components/Input';
 // import TextArea from '../components/TextArea';
-// import Select from '../components/Select';
+import Select from '../components/Select';
 // import Button from '../components/Button';
 
 class FormContainer extends Component {
@@ -44,7 +44,7 @@ class FormContainer extends Component {
     //     this.setState(prevState => ({newUser: {...prevState.newUser, age: value}}), () => console.log(this.state.newUser))
     // }
 
-    handleFullName = (e) => {
+    handleInput = (e) => {
         let value = e.target.value;
         let name = e.target.name;
         this.setState(
@@ -78,8 +78,14 @@ class FormContainer extends Component {
                     placeholder="Enter your age"
                     handleChange={this.handleInput}
                 /> 
-                {/* <Select /> 
-                <CheckBox />
+                <Select 
+                    title="Gender"
+                    name="gender"
+                    options={this.state.genderOptions}
+                    value={this.state.newUser.gender}
+                    handleChange={this.handleInput}
+                /> 
+                {/* <CheckBox />
                 <TextArea />
                 <Button /> 
                 <Button /> */}
